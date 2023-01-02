@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import Collapses from "./Collapse/Collapses.js";
+import Form from "./Menu/Form.js";
+import { useState } from "react";
 
 function App() {
+
+  const [collapses, setCollapses] = useState([]);
+  const addCollapses = collapse => {
+    setCollapses([...collapses, collapse])
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Collapses collapses={collapses}/>
+      <Form func={addCollapses}/>
     </div>
   );
 }
